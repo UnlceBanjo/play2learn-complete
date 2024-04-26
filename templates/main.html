@@ -1,5 +1,5 @@
 {% extends "master.html" %}
-
+{% load bootstrap5 %}
 {% block title %}Ocelot Tech Play2Learn{% endblock %}
 
 
@@ -20,34 +20,49 @@
     </div>
 </div>
 
+<hr />
 
-
-<div class="row">
+<div class="row" style="margin-top:30px; margin-bottom:30px;">
     <div class="col-lg-12">
-        <ul class="slider-wrapper">
-            <li class="item">
-                <h4>Math Facts Player says...</h4>
-                <p>This is a great game. This hits the peak of game javascript game development! So much fun!
-                </p>
-                <p><span style="font-size: 12px;font-style: italic;">- BJ Foreman</span></p>
-            </li>
 
-            <li class="item">
-                <h4>Anagram Player says...</h4>
-                <p>This is such a fun game. I cant wait to show my family and enjoy it with them.</p>
-                <p><span style="font-size: 12px;font-style: italic;">- Joshua Foreman</span></p>
-            </li>
+        <h3>Read our Reviews!</h1>
 
-            <li class="item">
-                <h4>Ocelot Technology Systems User</h4>
-                <p>Entire site is so nice. I cant wait to see what other games and systems they come up with.
-                </p>
-                <p><span style="font-size: 12px;font-style: italic;">- Angela Foreman</span></p>
-            </li>
-        </ul>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="border:2px solid #3e3e3e; padding:20px; margin:20px 0px 30px 0px;">
+            <div class="carousel-inner">
+                {% for x in myreviews %}
+                {% if forloop.counter == 1 %}
+                
+              <div class="carousel-item active">
+                <h4>{{ x.firstname }} {{ x.lastname }}</h4>
+                    <p>{{ x.review }}</p>
+                    <p><span style="font-size: 12px;font-style: italic;">- {{ x.firstname }} {{ x.lastname }}</span></p>
+                    
+              </div>
+                    
+
+              {% else %}
+              <div class="carousel-item">
+                
+                <h4>{{ x.firstname }} {{ x.lastname }}</h4>
+                    <p>{{ x.review }}</p>
+                    <p><span style="font-size: 12px;font-style: italic;">- {{ x.firstname }} {{ x.lastname }}</span></p>
+                    
+              </div>
+              
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+        <h5>Leave a Review! (Must be Logged in)</h4>
+          <a href="review/">
+            <button type="button" class="btn btn-primary">Leave a review!</button>
+        </a>
+
     </div>
 </div>
 
+<hr />
 
 <div class="row">
     <div class="col-md-6">
@@ -71,6 +86,13 @@
         </a>
     </div>
 </div>
+
+<!-- <form method="post" action="/">
+{% csrf_token %}
+{% bootstrap_form form %}
+<button name="save">Save</button>
+
+</form> -->
   
   
 {% endblock %}

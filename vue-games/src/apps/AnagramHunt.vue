@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="width: 500px">
+  <div class="container" style="width: 500px; float:left;">
     <!-- Start Screen -->
     <div v-if="screen=='start'" class="container">
       <div class="row m-auto">
